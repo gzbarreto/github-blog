@@ -28,10 +28,12 @@ export const ProfileContent = styled.div`
   }
 
   div {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
   }
+`
+export const ProfileName = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
 `
 
 export const ProfileInfo = styled.div`
