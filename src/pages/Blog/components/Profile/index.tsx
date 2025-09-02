@@ -1,7 +1,12 @@
 import { UsersIcon } from "@phosphor-icons/react/dist/ssr"
-import { ProfileContainer, ProfileContent, ProfileInfo, ProfileName } from "./styles"
+import {
+  ProfileContainer,
+  ProfileContent,
+  ProfileInfo,
+  ProfileName,
+} from "./styles"
 import { BuildingOfficeIcon, GithubLogoIcon } from "@phosphor-icons/react"
-import { LinkButton } from "../LinkButton"
+import { LinkButton } from "../../../../components/LinkButton"
 
 export function Profile() {
   return (
