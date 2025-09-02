@@ -3,12 +3,10 @@ import styled from "styled-components"
 export const ProfileContainer = styled.section`
   display: flex;
   align-items: center;
-  max-width: 864px;
   gap: 2rem;
   padding: 2rem;
   background-color: ${(props) => props.theme["base-profile"]};
   border-radius: 10px;
-  margin: 0 auto;
   position: relative;
   top: -5rem;
 
