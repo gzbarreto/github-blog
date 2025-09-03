@@ -1,3 +1,7 @@
+import { PostHeader } from "./components/PostHeader";
+
 export function Post() {
-  return <h1>Post</h1>
+  return (
+    <PostHeader />
+  )
 }

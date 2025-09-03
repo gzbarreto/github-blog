@@ -6,6 +6,7 @@ export const PostCardContainer = styled.div`
   padding: 2rem;
   background-color: ${(props) => props.theme["base-post"]};
   border-radius: 10px;
+  border: 1px solid transparent;
 
   h2 {
     font-size: 1.25rem;
@@ -26,5 +27,10 @@ export const PostCardContainer = styled.div`
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid ${(props) => props.theme["base-label"]};
   }
 `

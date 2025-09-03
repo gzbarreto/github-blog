@@ -1,8 +1,12 @@
 import { PostCardContainer } from "./styles";
 
-export function PostCard() {
+interface PostCardProps {
+  onClick?: () => void;
+}
+
+export function PostCard({onClick}: PostCardProps) {
   return (
-    <PostCardContainer>
+    <PostCardContainer onClick={onClick}>
       <h2>JavaScript data types and data structures</h2>
       <span>Há 1 dia</span>
       <p>
