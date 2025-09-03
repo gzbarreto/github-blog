@@ -4,7 +4,7 @@ export function SearchInput() {
   return (
     <SearchInputContainer>
       <SearchInputHeader>
-        <h2>Publicações</h2>
+        <h3>Publicações</h3>
         <span>6 publicações</span>
       </SearchInputHeader>
 

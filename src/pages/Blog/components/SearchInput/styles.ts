@@ -23,7 +23,7 @@ export const SearchInputHeader = styled.header`
   justify-content: space-between;
   margin-bottom: 0.75rem;
 
-  h2 {
+  h3 {
     font-size: 1.125rem;
     color: ${(props) => props.theme["base-subtitle"]};
   }
