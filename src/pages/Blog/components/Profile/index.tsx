@@ -7,37 +7,66 @@ import {
 } from "./styles"
 import { BuildingOfficeIcon, GithubLogoIcon } from "@phosphor-icons/react"
 import { LinkButton } from "../../../../components/LinkButton"
+import { api } from "../../../../lib/axios"
+import { useCallback, useEffect, useState } from "react"
+
+interface User {
+  link: string
+  name: string
+  bio: string
+  nickname: string
+  company: string
+  followers: number
+  avatar_url: string
+}
 
 export function Profile() {
+  const [user, setUser] = useState<User>({} as User)
+
+  const fetchUser = useCallback(async () => {
+    const response = await api.get("/users/gzbarreto")
+    console.log(response.data)
+
+    setUser({
+      link: response.data.html_url,
+      name: response.data.name,
+      bio: response.data.bio,
+      nickname: response.data.login,
+      company: response.data.company,
+      followers: response.data.followers,
+      avatar_url: response.data.avatar_url,
+    })
+  }, [])
+
+  useEffect(() => {
+    fetchUser()
+  }, [fetchUser])
+
   return (
     <ProfileContainer>
-      <img
-        src="https://avatars.githubusercontent.com/u/9919?s=200&v=4"
-        alt="Foto de perfil"
-      />
+      <img src={user.avatar_url} alt="Foto de perfil" />
       <ProfileContent>
         <ProfileName>
-          <h1>Gabriela Barreto</h1>
-          <LinkButton label="GITHUB" url="https://github.com/gzbarreto" />
+          <h1>{user.name}</h1>
+          <LinkButton label="GITHUB" url={user.link} />
         </ProfileName>
-        <span>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu
-          viverra massa quam dignissim aenean malesuada suscipit. Nunc, volutpat
-          pulvinar vel mass.
-        </span>
+        <span>{user.bio || ""}</span>
         <ProfileInfo>
           <span>
             <GithubLogoIcon size={18} weight="fill" />
-            gabrielabarreto
+            {user.nickname}
           </span>
           <span>
             <BuildingOfficeIcon size={18} weight="fill" />
-            Rocketseat
+            {user.company || "Independente"}
           </span>
-          <span>
-            <UsersIcon size={18} weight="fill" />
-            32
-          </span>
+          {user.followers > 0 && (
+            <span>
+              <UsersIcon size={18} weight="fill" />
+              {user.followers}{" "}
+              {user.followers === 1 ? "seguidor" : "seguidores"}
+            </span>
+          )}
         </ProfileInfo>
       </ProfileContent>
     </ProfileContainer>

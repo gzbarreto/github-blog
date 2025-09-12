@@ -19,6 +19,7 @@ export const ProfileContainer = styled.section`
 
 export const ProfileContent = styled.div`
   margin-top: 0.5rem;
+  width: 100%;
 
   h1 {
     color: ${(props) => props.theme["base-title"]};
