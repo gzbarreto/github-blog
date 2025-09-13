@@ -18,19 +18,19 @@ export const PostCardContainer = styled.div`
     color: ${(props) => props.theme["base-span"]};
   }
 
-  p {
-    margin-top: 1.25rem;
-    color: ${(props) => props.theme["base-text"]};
-
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   &:hover {
     cursor: pointer;
     border: 2px solid ${(props) => props.theme["base-label"]};
   }
+`
+
+export const PostContentContainer = styled.div`
+  margin-top: 1.25rem;
+  color: ${(props) => props.theme["base-text"]};
+
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `

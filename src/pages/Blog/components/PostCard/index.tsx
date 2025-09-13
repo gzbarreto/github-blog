@@ -1,10 +1,11 @@
-import { PostCardContainer } from "./styles";
+import Markdown from "react-markdown"
+import { PostCardContainer, PostContentContainer } from "./styles"
 
 interface PostCardProps {
-  onClick: () => void;
-  title: string;
-  created_at: string;
-  body: string;
+  onClick: () => void
+  title: string
+  created_at: string
+  body: string
 }
 
 export function PostCard({ onClick, title, created_at, body }: PostCardProps) {
@@ -12,7 +13,9 @@ export function PostCard({ onClick, title, created_at, body }: PostCardProps) {
     <PostCardContainer onClick={onClick}>
       <h2>{title}</h2>
       <span>{created_at}</span>
-      <p>{body}</p>
+      <PostContentContainer>
+        <Markdown>{body}</Markdown>
+      </PostContentContainer>
     </PostCardContainer>
   )
 }

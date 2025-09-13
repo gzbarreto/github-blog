@@ -14,6 +14,7 @@ import {
   GithubLogoIcon,
 } from "@phosphor-icons/react"
 import { LinkButton } from "../../components/LinkButton"
+import Markdown from "react-markdown"
 
 export function Post() {
   const params = useParams()
@@ -59,7 +60,9 @@ export function Post() {
         </PostHeaderContainer>
 
         <PostContainer>
-          <p>{post.body}</p>
+          <Markdown>
+            {post.body}
+          </Markdown>
         </PostContainer>
       </div>
     )
