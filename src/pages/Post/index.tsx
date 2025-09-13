@@ -1,23 +1,67 @@
-import { PostHeader } from "./components/PostHeader"
-import { PostContainer } from "./styles"
+import { useContext } from "react"
+import {
+  PostContainer,
+  PostFooter,
+  PostHeaderButtons,
+  PostHeaderContainer,
+} from "./styles"
+import { PostsContext } from "../../contexts/PostsContext"
+import { useParams } from "react-router-dom"
+import {
+  CalendarDotsIcon,
+  CaretLeftIcon,
+  ChatCircleIcon,
+  GithubLogoIcon,
+} from "@phosphor-icons/react"
+import { LinkButton } from "../../components/LinkButton"
 
 export function Post() {
-  return (
-    <div>
-      <PostHeader />
-      <PostContainer>
-        <p>
-          Programming languages all have built-in data structures, but these
-          often differ from one language to another. This article attempts to
-          list the built-in data structures available in JavaScript and what
-          properties they have. These can be used to build other data
-          structures. Wherever possible, comparisons with other languages are
-          drawn. Dynamic typing JavaScript is a loosely typed and dynamic
-          language. Variables in JavaScript are not directly associated with any
-          particular value type, and any variable can be assigned (and
-          re-assigned) values of all types:
-        </p>
-      </PostContainer>
-    </div>
-  )
+  const params = useParams()
+  const { posts } = useContext(PostsContext)
+
+  const post = posts.find((post) => post.id === Number(params.id))
+
+  if (!post) {
+    //condicional para garantir que o post nao seja undefined
+    return (
+      <PostHeaderContainer>
+        <h2>Post não encontrado.</h2>
+      </PostHeaderContainer>
+    )
+  } else {
+    return (
+      <div>
+        <PostHeaderContainer>
+          <PostHeaderButtons>
+            <button onClick={() => window.history.back()}>
+              <CaretLeftIcon size={12} />
+              VOLTAR
+            </button>
+            <LinkButton label="VER NO GITHUB" url={post.html_url} />
+          </PostHeaderButtons>
+
+          <h2>{post.title}</h2>
+
+          <PostFooter>
+            <span>
+              <GithubLogoIcon size={18} weight="fill" />
+              {post.user_name}
+            </span>
+            <span>
+              <CalendarDotsIcon size={18} weight="fill" />
+              {post.created_at}
+            </span>
+            <span>
+              <ChatCircleIcon size={18} weight="fill" />
+              {post.comments} comentários
+            </span>
+          </PostFooter>
+        </PostHeaderContainer>
+
+        <PostContainer>
+          <p>{post.body}</p>
+        </PostContainer>
+      </div>
+    )
+  }
 }

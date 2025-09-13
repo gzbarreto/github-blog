@@ -23,7 +23,7 @@ export function Blog() {
               title={post.title}
               body={post.body}
               created_at={post.created_at}
-              onClick={() => navigate(`/post`)}
+              onClick={() => navigate(`/post/${post.id}`)}
             />
           )
         })}

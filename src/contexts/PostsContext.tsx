@@ -8,6 +8,7 @@ interface Post {
   comments: number
   created_at: string
   user_name: string
+  html_url: string
 }
 
 interface PostProviderProps {
@@ -30,7 +31,17 @@ export function PostsProvider({ children }: PostProviderProps) {
     )
     console.log("fetching:", response.data)
 
-    setPosts(response.data.items)
+    setPosts(
+      response.data.items.map((post: any) => ({
+        id: post.number,
+        title: post.title,
+        body: post.body,
+        comments: post.comments,
+        created_at: post.created_at,
+        user_name: post.user.login,
+        html_url: post.html_url,
+      }))
+    )
   }, [])
 
   useEffect(() => {
