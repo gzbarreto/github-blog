@@ -25,7 +25,6 @@ export function Profile() {
 
   const fetchUser = useCallback(async () => {
     const response = await api.get("/users/gzbarreto")
-    console.log(response.data)
 
     setUser({
       link: response.data.html_url,
