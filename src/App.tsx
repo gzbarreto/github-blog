@@ -18,3 +18,7 @@ export function App() {
     </ThemeProvider>
   )
 }
+
+//#TODO
+// Criar lógica para pesquisar post pelo title usando o component de input
+// Formatar a data dos posts
