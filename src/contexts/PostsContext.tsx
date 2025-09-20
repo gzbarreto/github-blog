@@ -36,8 +36,18 @@ export function PostsProvider({ children }: PostProviderProps) {
     console.log("fetching:", response.data)
     console.log("url params:", q)
 
+    type ApiPost = {
+      number: number
+      title: string
+      body: string
+      comments: number
+      created_at: string
+      user: { login: string }
+      html_url: string
+    }
+
     setPosts(
-      response.data.items.map((post: any) => ({
+      response.data.items.map((post: ApiPost) => ({
         id: post.number,
         title: post.title,
         body: post.body,
