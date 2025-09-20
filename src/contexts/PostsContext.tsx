@@ -17,7 +17,7 @@ interface PostProviderProps {
 
 interface PostContextType {
   posts: Post[]
-  fetchPosts: () => Promise<void>
+  fetchPosts: (query?: string) => Promise<void>
 }
 
 export const PostsContext = createContext({} as PostContextType)
@@ -25,11 +25,16 @@ export const PostsContext = createContext({} as PostContextType)
 export function PostsProvider({ children }: PostProviderProps) {
   const [posts, setPosts] = useState<Post[]>([])
 
-  const fetchPosts = useCallback(async () => {
-    const response = await api.get(
-      "/search/issues?q=repo:gzbarreto/github-blog"
-    )
+  const fetchPosts = useCallback(async (query?: string) => {
+    const q = query
+      ? `repo:gzbarreto/github-blog ${query}`
+      : "repo:gzbarreto/github-blog"
+
+    const response = await api.get("/search/issues", {
+      params: { q },
+    })
     console.log("fetching:", response.data)
+    console.log("url params:", q)
 
     setPosts(
       response.data.items.map((post: any) => ({
