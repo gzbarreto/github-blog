@@ -5,11 +5,12 @@ export const HeaderContainer = styled.header`
   height: 18rem;
   display: flex;
   justify-content: center;
+  align-items: center;
 
   background: ${(props) => props.theme["base-profile"]};
 
   img {
-    width: 100%;
+    height: 120px;
     object-fit: cover;
   }
 `
