@@ -10,7 +10,7 @@ export const HeaderContainer = styled.header`
   background: ${(props) => props.theme["base-profile"]};
 
   img {
-    height: 120px;
+    width: 100%;
     object-fit: cover;
   }
 `
