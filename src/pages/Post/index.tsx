@@ -15,6 +15,7 @@ import {
 } from "@phosphor-icons/react"
 import { LinkButton } from "../../components/LinkButton"
 import Markdown from "react-markdown"
+import { dateFormatter } from "../../utils/formatter"
 
 export function Post() {
   const params = useParams()
@@ -50,7 +51,7 @@ export function Post() {
             </span>
             <span>
               <CalendarDotsIcon size={18} weight="fill" />
-              {post.created_at}
+              {dateFormatter.format(new Date(post.created_at))}
             </span>
             <span>
               <ChatCircleIcon size={18} weight="fill" />
